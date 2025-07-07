@@ -1,0 +1,12 @@
+#main
+{
+ height:auto;
+ width:600px;
+}
+
+.main_part
+{
+ height:150px;
+ width:200px;
+ float:left;  
+}

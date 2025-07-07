@@ -1,0 +1,71 @@
+React Project Architecture
+A React project is a collection of multiple folders and files which together form the entire application. Below is a breakdown of the main components:
+
+1. package.json
+This is the application configuration file.
+
+It includes:
+
+App version
+
+Scripts for running/testing the app
+
+List of dependencies
+
+Other project metadata
+
+2. package-lock.json
+This file stores a detailed list of all installed sub-packages.
+
+It ensures consistent installs across environments.
+
+It is an auto-generated file when npm install is run.
+
+3. index.html
+This is the main HTML file used in a Single Page Application (SPA).
+
+React uses this file to load the entire app inside a single page.
+
+It is the first page loaded when the app runs.
+
+4. src/ (Source Folder)
+Contains the main application source code.
+
+Includes static data, components, configuration files, and more.
+
+Contents of src/:
+index.jsx:
+
+The main entry point.
+
+Responsible for rendering the React app into the real DOM.
+
+Connects the virtual DOM with the real DOM using ReactDOM.render().
+
+App.jsx:
+
+The root (parent) component of the application.
+
+All custom child components are linked through App.
+
+App.css:
+
+Styling specific to the App component.
+
+index.css:
+
+Global CSS file used throughout the application.
+
+assets/:
+
+Stores all static resources like images, audio, video, icons, etc.
+
+Let me know if you’d like a diagram or folder structure visualization for this.
+
+
+
+
+
+
+
+
