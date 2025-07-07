@@ -43,7 +43,6 @@ function Bidproduct() {
         }
       })
       .catch(() => {
-        // console.error("Error fetching bids:", error);
         setCurrentPrice(productDetails.baseprice);
       });
   }, [productDetails, params._id]);
