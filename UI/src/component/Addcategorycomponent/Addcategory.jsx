@@ -1,6 +1,6 @@
-import './AddCategory.css';
+
 import axios from 'axios';
-import { useState , useEffect } from 'react';
+import { useState } from 'react';
 import { __categoryapiurl } from '../../API_URL';
 
 function AddCategory() {
