@@ -412,7 +412,7 @@ function Navbar() {
         </section>);
       }
     }, 1000)
-  }, []);
+  });
 
 
   return (
