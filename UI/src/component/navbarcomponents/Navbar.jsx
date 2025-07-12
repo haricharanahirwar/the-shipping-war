@@ -40,7 +40,7 @@ function Navbar() {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
-                    <Link className="nav-link" to="/">AdminHome <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/admin">AdminHome <span className="sr-only">(current)</span></Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/manageusers">manageusers</Link>
@@ -181,7 +181,7 @@ function Navbar() {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
-                    <Link className="nav-link" to="/">UHome <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/user">UHome <span className="sr-only">(current)</span></Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/Listofcategory">Listofcategory</Link>
