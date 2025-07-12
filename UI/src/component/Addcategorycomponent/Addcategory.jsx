@@ -1,4 +1,3 @@
-import './AddCategory.css'
 import axios from 'axios';
 import { useState } from 'react';
 import { __categoryapiurl } from '../../API_URL';
