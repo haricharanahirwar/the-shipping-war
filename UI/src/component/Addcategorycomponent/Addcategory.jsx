@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { __categoryapiurl } from '../../API_URL';
 
 function AddCategory() {
-    
     const [file, setFile] = useState();
     const [catName , setCatName] = useState();
     const [output , setOutput] = useState();
