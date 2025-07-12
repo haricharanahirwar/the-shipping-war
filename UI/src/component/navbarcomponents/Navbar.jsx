@@ -155,7 +155,7 @@ function Navbar() {
           </div>
         </section>);
       }
-      else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == 'user') {
+      else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "user") {
         setNavbarContent(<section className="header_section">
           <div className="container maynewclass">
             {/* Mobile Navbar */}
