@@ -1,4 +1,4 @@
-import './AddSubCategory.css';
+import './Addsubcategory.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { __categoryapiurl, __subcategoryapiurl } from '../../API_URL';
