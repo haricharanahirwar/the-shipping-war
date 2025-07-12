@@ -290,7 +290,8 @@ function Navbar() {
         </section>);
       }
       else {
-        setNavbarContent(<section className="header_section ">
+        setNavbarContent(
+        <section className="header_section ">
           <div className="container ">
             {/* Mobile Navbar */}
             <nav className="navbar navbar-expand-lg custom_nav-container d-lg-none" >
@@ -410,7 +411,7 @@ function Navbar() {
           </div>
         </section>);
       }
-    }, 1)
+    }, 1000)
   }, []);
 
 
