@@ -6,7 +6,7 @@ function Auth() {
 
     useEffect(() => {
         var path = window.location.pathname;
-        if (path == "/admin" || path == "/manageusers") {
+        if (path == "/admin" || path == "/manageusers"|| path=="/epadmin" || path=="/cpadmin" || path=="/addcategory" || path=="/addsubcategory") {
             if (!localStorage.getItem("token") || localStorage.getItem("role") != "admin")
                 navigate("/logout");
         }
