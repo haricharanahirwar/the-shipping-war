@@ -50,7 +50,7 @@ function Login() {
          const user = response.data.userDetails;
       //  console.log(response.data);
         
-        localStorage.setItem("tokan", response.data.token);
+        localStorage.setItem("token", response.data.token);
         localStorage.setItem("name", user.name);
         localStorage.setItem("email", user.email);
         localStorage.setItem("mobile", user.mobile);
