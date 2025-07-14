@@ -7,8 +7,8 @@ import { Navigate } from 'react-router-dom';
 
 function Navbar() {
 
-  const [setyesbutton, handleLogout] = useState();
-  const [sernobutton, handleNoButton] = useState();
+  const [yesbutton, setHandleLogout] = useState();
+  const [nobutton, setHandleNoButton] = useState();
   const [NavbarContent, setNavbarContent] = useState();
 
 
