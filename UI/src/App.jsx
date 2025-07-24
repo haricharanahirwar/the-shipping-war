@@ -30,8 +30,8 @@ function App() {
 
   return (
     <>
-              <Header /> 
-              {/* <Navbar/>  */}
+              
+              <Navbar/> 
 
       <Routes>
         <Route path='/' element={<Home/>}></Route>
