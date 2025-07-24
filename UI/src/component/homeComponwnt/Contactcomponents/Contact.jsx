@@ -14,8 +14,8 @@ function Contact(){
               <div id="map" class="h-100 w-100"></div>
             </div>
 
-            <div class="col-md-6">
-              <div class="contact_form-container">
+            <div class="col-md-6" >
+              <div class="contact_form-container" style={{backgroundColor:"#34699A"}}>
                 <form action="">
                   <div>
                     <input type="text" placeholder="Your Name" />

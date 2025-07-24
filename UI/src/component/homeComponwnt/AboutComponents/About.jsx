@@ -5,11 +5,11 @@ function About()
     return(
         <>
          {/* about section */}
-      <section class="about_section ">
+      <section class="about_section "style={{backgroundColor:"#34699A",color:"white"}}>
         <div class="container">
           <div class="row">
             <div class="col">
-              <h2 class="heading_style">
+              <h2 class="heading_style" style={{color:"white"}}>
                 About Us
               </h2>
               <p>
@@ -19,9 +19,9 @@ function About()
             </div>
 
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="about_img-box">
+          <div class="row" >
+            <div class="col-md-6" >
+              <div class="about_img-box" >
 
                 <img src="/assets/images/slider-bg.png" alt="" class="img-fluid" />
               </div>
@@ -38,7 +38,7 @@ function About()
                   adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna as
                 </p>
                 <div class="d-flex  justify-content-end">
-                  <a href="" class="quote-btn about-btn">
+                  <a href="" class="quote-btn about-btn" style={{backgroundColor:"#34699A"}}>
                     <img src="/assets/images/white-next.png" alt="" />
                     <span>
                       About More

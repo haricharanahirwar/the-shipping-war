@@ -24,12 +24,15 @@ import Addproduct from './component/AddProductComponent/Addproduct';
 import Slider from './component/SliderComponents/Slider';
 import Showproduct from './component/Showproductcomponent/Showproduct'
 import Bidproduct from './component/bidcomponent/Bidproduct';
+import Header from './component/headercomponent/Header';
 
 function App() {
 
   return (
     <>
-      <Navbar/>
+              <Header /> 
+              {/* <Navbar/>  */}
+
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/slider'element={<Slider />}></Route>

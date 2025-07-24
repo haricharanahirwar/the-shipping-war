@@ -72,7 +72,7 @@ function AddSubCategory() {
                   <input type="file" class="form-control" onChange={handleChange} />
                 </div>
                 <br />
-                <button onClick={handleSubmit} type="button" class="btn btn-danger">Add SubCategory</button>
+                <button onClick={handleSubmit} type="button" class="btn btn-danger"style={{ backgroundColor: '#34699A', color: 'white' }}>Add SubCategory</button>
               </form>
             </div>
           </div>

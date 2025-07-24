@@ -3,7 +3,7 @@ function Testimonial(){
     return(
         <>
         {/* testimonial section */}
-  <section class="client_section layout_padding">
+  <section class="client_section layout_padding" >
     <div class="d-flex justify-content-center">
       <h2 class="heading_style">
         Testimonial
@@ -25,7 +25,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -39,7 +39,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img  src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -59,7 +59,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -73,7 +73,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -93,7 +93,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -107,7 +107,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -127,7 +127,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>
@@ -142,7 +142,7 @@ function Testimonial(){
                   <div class="client_img">
                     <img src="/assets/images/83e4b6d2-8271-44eb-a850-476b42fcab03.jpg" alt="" class="img-fluid"/>
                   </div>
-                  <div class="client_detail">
+                  <div class="client_detail"style={{backgroundColor:"#34699A"}}>
                     <h5>
                       Harry Rathore
                     </h5>

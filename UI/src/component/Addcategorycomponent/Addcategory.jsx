@@ -45,7 +45,7 @@ function AddCategory() {
     <input type="file" class="form-control" onChange={handleChange} />
   </div>
   <br/>
-  <button onClick={handleSubmit} type="button" class="btn btn-danger">Add Category</button>
+  <button onClick={handleSubmit} type="button" class="btn btn-danger"style={{ backgroundColor: '#34699A', color: 'white' }}>Add Category</button>
 </form>
             </div>
         </div>
