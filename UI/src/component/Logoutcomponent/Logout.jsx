@@ -27,7 +27,7 @@ function Logout(){
             }
             else{
                   if(localStorage.getItem("role")=="admin"){
-                    Navigate("admid")
+                    Navigate("admin")
                   }
                   else if(localStorage.getItem("rolr")=="user"){
                     Navigate("/user")
