@@ -31,8 +31,7 @@ function App() {
   return (
     <>
               
-              <Navbar/> 
-
+       <Navbar/> 
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/slider'element={<Slider />}></Route>
