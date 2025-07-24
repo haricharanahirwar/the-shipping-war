@@ -11,16 +11,16 @@ function Navbar() {
         setInterval(() => {
 
             if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "admin") {
-                setNavbarContent(<>    <div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                setNavbarContent(<>    <div className="container-fluid px-0" style={{ backgroundColor: '#0A0057', color: 'white' }}>
                     <div className="row gx-0">
-                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#0A0057' }}>
                             <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
 
                                 <h2 className="m-0 text-white text-uppercase" style={{ 'color': "white" }}>Shipping War</h2>
                             </Link>
                         </div>
                         <div className="col-lg-9">
-                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#0A0057' }}>
                                 <div className="col-lg-7 px-5 text-start">
                                     <div className="h-100 d-inline-flex align-items-center py-2 me-4">
                                         <i className="fa fa-envelope me-2 text-white"></i>
@@ -29,7 +29,7 @@ function Navbar() {
                                 </div>
                             </div>
 
-                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#0A0057' }}>
                                 <Link to="/" className="navbar-brand d-block d-lg-none">
                                     <h1 className="m-0 text-white text-uppercase">Shipping War</h1>
                                 </Link>
@@ -59,7 +59,7 @@ function Navbar() {
                                         </div>
                                     </div>
 
-                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white"style={{backgroundColor:"#34699A",color:"white",marginRight:"10px"}}>
+                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white"style={{backgroundColor:"#0A0057",color:"white",marginRight:"10px"}}>
                                         Logout <i className="fa fa-arrow-right ms-3"></i>
                                     </Link>
                                 </div>
@@ -70,15 +70,15 @@ function Navbar() {
                 </>);
             }
             else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "user") {
-                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#0A0057', color: 'white' }}>
                     <div className="row gx-0">
-                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#0A0057' }}>
                             <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                                 <h2 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h2>
                             </Link>
                         </div>
                         <div className="col-lg-9">
-                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#0A0057' }}>
                                 <div className="col-lg-7 px-5 text-start">
                                     <div className="h-100 d-inline-flex align-items-center py-2 me-4">
                                         <i className="fa fa-envelope me-2" style={{ color: 'white' }}></i>
@@ -87,7 +87,7 @@ function Navbar() {
                                 </div>
                             </div>
 
-                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#0A0057' }}>
                                 <Link to="/" className="navbar-brand d-block d-lg-none">
                                     <h1 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h1>
                                 </Link>
@@ -109,7 +109,7 @@ function Navbar() {
                                         </div>
 
                                     </div>
-                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block"  style={{backgroundColor:"#34699A",color:"white",marginRight:"10px"}}>
+                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block"  style={{backgroundColor:"#0A0057",color:"white",marginRight:"10px"}}>
                                         Logout <i className="fa fa-arrow-right ms-3"></i>
                                     </Link>
                                 </div>
@@ -120,15 +120,15 @@ function Navbar() {
                 </>);
             }
             else {
-                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#0A0057', color: 'white' }}>
                     <div className="row gx-0">
-                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#0A0057' }}>
                             <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                                 <h2 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h2>
                             </Link>
                         </div>
                         <div className="col-lg-9">
-                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#0A0057' }}>
                                 <div className="col-lg-7 px-5 text-start">
                                     <div className="h-100 d-inline-flex align-items-center py-2 me-4">
                                         <i className="fa fa-envelope me-2" style={{ color: 'white' }}></i>
@@ -150,7 +150,7 @@ function Navbar() {
                                 </div>
                             </div>
 
-                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#0A0057' }}>
                                 <Link to="/" className="navbar-brand d-block d-lg-none">
                                     <h1 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h1>
                                 </Link>
@@ -169,7 +169,7 @@ function Navbar() {
                                         <Link to="/register" className="nav-item nav-link text-white">Register</Link>
                                     </div>
 
-                                    <Link to="/login" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white " style={{backgroundColor:"#34699A",marginRight:"10px"}}>
+                                    <Link to="/login" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white " style={{backgroundColor:"#0A0057",marginRight:"10px"}}>
                                         Login <i className="fa fa-arrow-right ms-3"></i>
                                     </Link>
                                 </div>
@@ -182,14 +182,15 @@ function Navbar() {
         }, 1);
     }, []);
 
-    return (
-        <>
-            {/* Header Start */}
-            {<Auth />}
-            {NavbarContent>}
-            {/* Header End */}
-        </>
+        return (
+            <>
+    {/* Header Start */}
+    <Auth />
+    {NavbarContent}
+    {/* Header End */}
+</>
+
     )
 }
 
-export default Header;
+export default Navbar;
