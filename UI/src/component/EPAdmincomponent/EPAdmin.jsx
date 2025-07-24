@@ -93,7 +93,7 @@ function EPAdmin() {
     Female <input type="radio" name="gender" value="female" onChange={(e)=>{ setGender(e.target.value)}} />
   </div>
   <br/>
-  <button type="button" class="btn btn-warning" onClick={handleSubmit}>Submit</button>
+  <button type="button" class="btn btn-warning" onClick={handleSubmit} style={{ backgroundColor: '#34699A', color: 'white' }}>Submit</button>
 </form>
             </div>
         </div>

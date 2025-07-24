@@ -4,7 +4,7 @@ import './Slider.css';
 function Slider() {
   return (
      <>
-        <div class="hero_area">
+        <div class="hero_area" style={{backgroundColor:"#34699A"}}>
           <section class=" slider_section " >
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
@@ -27,7 +27,7 @@ function Slider() {
                                   <img src="/assets/images/search-icon.png" alt="" />
                                 </div>
 
-                                <button>
+                                <button style={{backgroundColor:"#34699A"}}>
                                   Search
                                 </button>
                               </form>
@@ -37,18 +37,18 @@ function Slider() {
 
                               <div class="d-flex">
                                 <div>
-                                  <a href="" class="read-btn">
+                                  <a href="" class="read-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Read More
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />
                                   </a>
                                 </div>
                                 <div class="ml-3">
-                                  <a href="" class="quote-btn">
+                                  <a href="" class="quote-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Get A Quote
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />
@@ -83,7 +83,7 @@ function Slider() {
                                   <img src="/assets/images/search-icon.png" alt="" />
                                 </div>
 
-                                <button>
+                                <button style={{backgroundColor:"#34699A"}}>
                                   Search
                                 </button>
                               </form>
@@ -97,18 +97,18 @@ function Slider() {
 
                               <div class="d-flex">
                                 <div>
-                                  <a href="" class="read-btn">
+                                  <a href="" class="read-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Read More
-                                    </span>
+                                    </span  >
                                     <img src="/assets/images/white-next.png" alt="" />
                                   </a>
                                 </div>
                                 <div class="ml-3">
-                                  <a href="" class="quote-btn">
+                                  <a href="" class="quote-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Get A Quote
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />
@@ -143,7 +143,7 @@ function Slider() {
                                   <img src="/assets/images/search-icon.png" alt="" />
                                 </div>
 
-                                <button>
+                                <button style={{backgroundColor:"#34699A"}}>
                                   Search
                                 </button>
                               </form>
@@ -157,20 +157,20 @@ function Slider() {
 
                               <div class="d-flex">
                                 <div>
-                                  <a href="" class="read-btn">
+                                  <a href="" class="read-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Read More
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />
                                   </a>
                                 </div>
                                 <div class="ml-3">
-                                  <a href="" class="quote-btn">
+                                  <a href="" class="quote-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Get A Quote
-                                    </span>
+                                    </span >
                                     <img src="/assets/images/white-next.png" alt="" />
                                   </a>
                                 </div>
@@ -204,7 +204,7 @@ function Slider() {
                                   <img src="/assets/images/search-icon.png" alt="" />
                                 </div>
 
-                                <button>
+                                <button style={{backgroundColor:"#34699A"}}>
                                   Search
                                 </button>
                               </form>
@@ -218,18 +218,18 @@ function Slider() {
 
                               <div class="d-flex">
                                 <div>
-                                  <a href="" class="read-btn">
+                                  <a href="" class="read-btn" style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Read More
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />
                                   </a>
                                 </div>
                                 <div class="ml-3">
-                                  <a href="" class="quote-btn">
+                                  <a href="" class="quote-btn"  style={{backgroundColor:"#34699A"}}>
 
-                                    <span>
+                                    <span >
                                       Get A Quote
                                     </span>
                                     <img src="/assets/images/white-next.png" alt="" />

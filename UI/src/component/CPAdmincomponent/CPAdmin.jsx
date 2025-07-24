@@ -62,7 +62,7 @@ function CPAdmin() {
     <input type="password" class="form-control" value={cnpassword} onChange={(e)=>{ setConfirmNewPassword(e.target.value)}} />
   </div>
   <br/>
-  <button type="button" class="btn btn-warning" onClick={handleSubmit}>Submit</button>
+  <button type="button" class="btn btn-warning" onClick={handleSubmit} style={{ backgroundColor: '#34699A', color: 'white' }}>Submit</button>
 </form>
 
 </div>

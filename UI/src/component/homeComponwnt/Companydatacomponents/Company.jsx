@@ -3,8 +3,8 @@ function Company(){
     return(
         <>
         {/* company section */}
-      <section class="company_section layout_padding2">
-        <div class="container">
+      <section class="company_section layout_padding2" >
+        <div class="container"style={{backgroundColor:"#34699A",color:"white"}}>
           <div class="row">
             <div class="col-md-6">
               <div class="d-flex align-items-center h-100">

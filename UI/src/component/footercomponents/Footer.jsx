@@ -1,3 +1,4 @@
+import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer(){
@@ -6,8 +7,8 @@ function Footer(){
              {/* info section */}
  <section class="info_section ">
  <div class="container ">
-   <div class="row  mb-3 pb-4">
-     <div class="col-md-3 info_logo">
+   <div class="row  mb-3 pb-4" style={{backgroundColor:"#34699A"}}>
+     <div class="col-md-3 info_logo" id="footer">
        <div class="logo-box">
          <img src="/assets/images/logo-white.png" alt="" />
          <span>
@@ -40,7 +41,7 @@ function Footer(){
          </div>
        </div>
      </div>
-     <div class="col-md-3 info_address">
+     <div class="col-md-3 info_address" id="footer">
        <h5>
          Address
        </h5>
@@ -61,7 +62,7 @@ function Footer(){
      </div>
      <div class="col-md-3 info_links">
 
-       <div class="info_nav ">
+       <div class="info_nav "id="footer">
          <nav class="">
            <ul>
              <h5>
@@ -96,7 +97,7 @@ function Footer(){
          </nav>
        </div>
      </div>
-     <div class="col-md-3 info_news">
+     <div class="col-md-3 info_news"id="footer">
        <h5>
          Newsletter
        </h5>

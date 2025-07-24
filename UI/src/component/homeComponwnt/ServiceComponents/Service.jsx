@@ -15,7 +15,7 @@ function Service(){
               <div class="service_img-box s-b-1">
                 <img src="/assets/images/service-1.jpg" alt="" />
                 <div class="d-flex">
-                  <h3>
+                  <h3 >
                     CARGO
 
                   </h3>
@@ -27,7 +27,7 @@ function Service(){
                   dolore eu fugiat nulla pariatur.Excepteur
                 </p>
                 <div class="d-flex justify-content-end">
-                  <a href="" class="service-btn">
+                  <a href="" class="service-btn"style={{backgroundColor:"#34699A",color:"white"}}>
                     See More
                   </a>
                 </div>
@@ -36,8 +36,8 @@ function Service(){
             <div class="col-md-4">
               <div class="service_img-box s-b-2">
                 <img src="/assets/images/service-2.jpg" alt="" />
-                <div class="d-flex">
-                  <h3>
+                <div class="d-flex" >
+                  <h3 >
                     LOGISTIC SERVICE
 
 
@@ -50,7 +50,7 @@ function Service(){
                   dolore eu fugiat nulla pariatur.Excepteur
                 </p>
                 <div class="d-flex justify-content-end">
-                  <a href="" class="service-btn">
+                  <a href="" class="service-btn" style={{backgroundColor:"#34699A",color:"white"}}>
                     See More
                   </a>
                 </div>
@@ -59,8 +59,8 @@ function Service(){
             <div class="col-md-4">
               <div class="service_img-box s-b-3">
                 <img src="/assets/images/service-3.jpg" alt="" />
-                <div class="d-flex">
-                  <h3>
+                <div class="d-flex" style={{backgroundColor:"#34699A",color:"white"}}>
+                  <h3 style={{backgroundColor:"#34699A",color:"white"}}>
                     STORAGE
 
 
@@ -73,7 +73,7 @@ function Service(){
                   dolore eu fugiat nulla pariatur.Excepteur
                 </p>
                 <div class="d-flex justify-content-end">
-                  <a href="" class="service-btn">
+                  <a href="" class="service-btn" style={{backgroundColor:"#34699A",color:"white"}}>
                     See More
                   </a>
                 </div>

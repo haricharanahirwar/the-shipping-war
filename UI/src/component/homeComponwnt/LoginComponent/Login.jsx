@@ -87,7 +87,7 @@ function Login() {
   return (
     <>
       {/* Login Start */}
-      <div class="d-flex justify-content-center align-items-center py-5 ">
+      <div class="d-flex justify-content-center align-items-center py-5 " >
 
         <div class=" col-10 col-sm-6 col-md-6 col-lg-4 shadow rounded " id='divbox'>
 
@@ -109,7 +109,7 @@ function Login() {
             </div>
 
             <input type="checkbox" onClick={handletogglepassword} /> <label htmlFor="" className='text-light'>{passwordtext}</label><br /><br />
-            <button type="button" class="btn btn-primary w-100 py-2" onClick={handleSubmit}>Submit</button>
+            <button type="button" class="btn btn-primary w-100 py-2" onClick={handleSubmit} style={{backgroundColor:"#34699A",color:"white"}}>Submit</button>
           </form>
         </div>
       </div>

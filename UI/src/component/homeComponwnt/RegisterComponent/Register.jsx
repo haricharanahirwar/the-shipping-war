@@ -43,7 +43,7 @@ function Register() {
           <div class="row g-5 align-items-center">
             <div class="col-lg-12">
               {output}
-              <h1 class="mb-4">Register <span class="text-primary text-uppercase">Here!!!</span></h1>
+              <h1 class="mb-4">Register <span class="text-dark text-uppercase">Here!!!</span></h1>
 
               <form>
                 <div class="form-group">
@@ -96,7 +96,7 @@ function Register() {
                   Female <input type="radio" value="female" name="gender" onChange={(e) => { setGender(e.target.value) }} />
                 </div>
                 <br />
-                <button type="button" class="btn btn-warning" onClick={handleSubmit}>Submit</button>
+                <button type="button" class="btn btn-warning" onClick={handleSubmit} style={{backgroundColor:"#34699A",color:"white"}}>Submit</button>
               </form>
 
             </div>

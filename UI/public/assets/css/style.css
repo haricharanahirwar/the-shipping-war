@@ -601,7 +601,8 @@ a:focus {
   padding-top: 150px;
   padding-bottom: 1px;
   color: #fff;
-  background-image: url(../images/info-bg.png);
+  margin-top: 20px;
+  /* background-image: url(../images/info-bg.png); */
   background-size: 100% 101%;
 
   background-repeat: no-repeat;

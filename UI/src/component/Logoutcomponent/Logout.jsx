@@ -7,10 +7,17 @@ function Logout(){
     useEffect(()=>{
         Swal.fire({
             text:'Do you really want to logout?',
-           icon:'warning',
+           icon:'question',
            showCancelButton:true,
            confirmButtonText:'yes',
            cancelButtonText:'No',
+             customClass: {
+   actions: 'swal-buttons-gap',
+    confirmButton: 'btn-yes',
+    cancelButton: 'btn-no'
+  },
+  buttonsStyling: false
+
         }).then((result)=>{
             if(result.isConfirmed){
                 localStorage.removeItem("tokan");
