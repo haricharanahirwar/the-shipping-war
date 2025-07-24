@@ -1,428 +1,195 @@
-
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Auth from '../authcomponent/Auth';
-import { Navigate } from 'react-router-dom';
 
 function Navbar() {
 
-  const [yesbutton, setHandleLogout] = useState();
-  const [nobutton, setHandleNoButton] = useState();
-  const [NavbarContent, setNavbarContent] = useState();
+    const [NavbarContent, setNavbarContent] = useState();
 
+    useEffect(() => {
+        setInterval(() => {
 
-  useEffect(() => {
-    setInterval(() => {
-      if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "admin") {
-        setNavbarContent(<section className="header_section">
-          <div className="container maynewclass">
-            {/* Mobile Navbar */}
-            <nav className="navbar navbar-expand-lg custom_nav-container d-lg-none">
-              <Link className="navbar-brand" to="/">
-                <div className="logo-box">
-                  <img src="/assets/images/logo.png" alt="" />
-                  <span>Shipping War</span>
-                </div>
-              </Link>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
+            if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "admin") {
+                setNavbarContent(<>    <div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                    <div className="row gx-0">
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                            <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
 
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <Link className="nav-link" to="/admin">AdminHome <span className="sr-only">(current)</span></Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/manageusers">manageusers</Link>
-                  </li>
-
-                  <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'black' }} >Manage Category</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                      <a class="dropdown-item"> <Link className="nav-link" to="/addcategory">AddCategory</Link></a>
-                      <a class="dropdown-item"> <Link className="nav-link" to="/addsubcategory">AddSubCategory</Link></a>
-                    </div>
-                  </div>
-
-
-                  
-                  <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': '#FDA117' }} >Settings</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                      <a class="dropdown-item"><Link to="/epadmin">Edit Profile</Link></a>
-                      <a class="dropdown-item"><Link to="/cpadmin">Change Password</Link></a>
-                    </div>
-                  </div>
-
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Logout" >Logout</Link>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-
-            {/* Desktop Header */}
-            <div className="header_container">
-              <div className="logo-box">
-                <img src="/assets/images/logo.png" alt="" />
-                <span>Shipping War</span>
-              </div>
-
-              <div>
-                <div className="header_top">
-                  <div className="header_top-contact">
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/phone.png" alt="" /></div>
-                      <span>+91XXXXXX4785</span>
-                    </a>
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/mail.png" alt="" /></div>
-                      <span>Welcome{localStorage.getItem("email")}</span>
-                    </a>
-                  </div>
-
-                  <div className="header_top-social">
-                    <div><a href="https://www.facebook.com/"><img src="/assets/images/fb.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/twitter.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/g-plus.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/linkedin.png" alt="" /></a></div>
-                  </div>
-                </div>
-
-                {/* Desktop Navbar */}
-                <div className="header_btm">
-                  <nav className="navbar navbar-expand-lg custom_nav-container pt-3">
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#navbarSupportedContent"
-                      aria-controls="navbarSupportedContent"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation"
-                    >
-                      <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
-                        <ul className="navbar-nav">
-                          <li className="nav-item active">
-                            <Link className="nav-link" to="/">adminHome <span className="sr-only">(current)</span></Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/manageusers">manageusers</Link>
-                          </li>
-                          <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'black' }} >Manage Category</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                              <a class="dropdown-item"> <Link className="nav-link" to="/addcategory">AddCategory</Link></a>
-                              <a class="dropdown-item"> <Link className="nav-link" to="/addsubcategory">AddSubCategory</Link></a>
-                              
-
+                                <h2 className="m-0 text-white text-uppercase" style={{ 'color': "white" }}>Shipping War</h2>
+                            </Link>
+                        </div>
+                        <div className="col-lg-9">
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                                <div className="col-lg-7 px-5 text-start">
+                                    <div className="h-100 d-inline-flex align-items-center py-2 me-4">
+                                        <i className="fa fa-envelope me-2 text-white"></i>
+                                        <p className="mb-0 text-white">Welcome : {localStorage.getItem('email')}</p>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <li className="nav-item">
-                          </li>
-                          <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'black' }} >Settings</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                              <a class="dropdown-item"><Link to="/epadmin">Edit Profile</Link></a>
-                              <a class="dropdown-item"><Link to="/cpadmin">Change Password</Link></a>
+
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                                <Link to="/" className="navbar-brand d-block d-lg-none">
+                                    <h1 className="m-0 text-white text-uppercase">Shipping War</h1>
+                                </Link>
+                                <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                    <div className="navbar-nav mr-auto py-0">
+                                        <Link to="/admin" className="nav-item nav-link text-white">Admin Home</Link>
+                                        <Link to="/manageusers" className="nav-item nav-link text-white">Manage Users</Link>
+
+                                        <div className="nav-item dropdown">
+                                            <span className="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Manage Category</span>
+                                            <div className="dropdown-menu rounded-0 m-0">
+                                                <Link to="/addcategory" className="dropdown-item text-black">Add Category</Link>
+                                                <Link to="/addsubcategory" className="dropdown-item text-black">Add SubCategory</Link>
+                                            </div>
+                                        </div>
+
+                                        <div className="nav-item dropdown">
+                                            <span className="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Settings</span>
+                                            <div className="dropdown-menu rounded-0 m-0">
+                                                <Link to="/epadmin" className="dropdown-item text-black">Edit Profile</Link>
+                                                <Link to="/cpadmin" className="dropdown-item text-black">Change Password</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white"style={{backgroundColor:"#34699A",color:"white",marginRight:"10px"}}>
+                                        Logout <i className="fa fa-arrow-right ms-3"></i>
+                                    </Link>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                </>);
+            }
+            else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "user") {
+                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                    <div className="row gx-0">
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                            <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                                <h2 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h2>
+                            </Link>
+                        </div>
+                        <div className="col-lg-9">
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                                <div className="col-lg-7 px-5 text-start">
+                                    <div className="h-100 d-inline-flex align-items-center py-2 me-4">
+                                        <i className="fa fa-envelope me-2" style={{ color: 'white' }}></i>
+                                        <p className="mb-0" style={{ color: 'white' }}>Welcome : {localStorage.getItem('email')}</p>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Logout">Logout</Link>
-                          </li>
 
-                        </ul>
-                      </div>
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                                <Link to="/" className="navbar-brand d-block d-lg-none">
+                                    <h1 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h1>
+                                </Link>
+                                <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                                <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                    <div className="navbar-nav mr-auto py-0">
+                                        <Link to="/user" className="nav-item nav-link" style={{ color: 'white' }}>User Home</Link>
+                                        <Link to="/listofcategory" className="nav-item nav-link" style={{ color: 'white' }}>Listofcategory</Link>
+                                        <Link to="/addproduct" className="nav-item nav-link" style={{ color: 'white' }}>Addproduct</Link>
+                                        <Link to="/showproduct" className="nav-item nav-link" style={{ color: 'white' }}>View</Link>
+                                        <div class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'white' }} >Settings</a>
+                                            <div class="dropdown-menu rounded-0 m-0">
+                                                <a class="dropdown-item"><Link to="/epadmin">Edit Profile</Link></a>
+                                                <a class="dropdown-item"><Link to="/cpadmin">Change Password</Link></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block"  style={{backgroundColor:"#34699A",color:"white",marginRight:"10px"}}>
+                                        Logout <i className="fa fa-arrow-right ms-3"></i>
+                                    </Link>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
-                  </nav>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>);
-      }
-      else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "user") {
-        setNavbarContent(<section className="header_section">
-          <div className="container maynewclass">
-            {/* Mobile Navbar */}
-            <nav className="navbar navbar-expand-lg custom_nav-container d-lg-none">
-              <Link className="navbar-brand" to="/">
-                <div className="logo-box">
-                  <img src="/assets/images/logo.png" alt="" />
-                  <span>Shipping War</span>
-                </div>
-              </Link>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <Link className="nav-link" to="/user">UHome <span className="sr-only">(current)</span></Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Listofcategory">Listofcategory</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/addproduct">Addproduct</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/showproduct">View</Link>
-                  </li>
-                 
-                  <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'black' }} >Settings</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                      <a class="dropdown-item"><Link to="/epadmin">Edit Profile</Link></a>
-                      <a class="dropdown-item"><Link to="/cpadmin">Change Password</Link></a>
-                    </div>
-                  </div>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Logout">Logout</Link>
-                  </li>
-
-                </ul>
-              </div>
-            </nav>
-
-            {/* Desktop Header */}
-            <div className="header_container">
-              <div className="logo-box">
-                <img src="/assets/images/logo.png" alt="" />
-                <span>Shipping War</span>
-              </div>
-
-              <div>
-                <div className="header_top">
-                  <div className="header_top-contact">
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/phone.png" alt="" /></div>
-                      <span>(+91)258964785</span>
-                    </a>
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/mail.png" alt="" /></div>
-                      <span>Welcome {localStorage.getItem("email")}</span>
-                    </a>
-                  </div>
-
-                  <div className="header_top-social">
-                    <div><a href="/"><img src="/assets/images/fb.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/twitter.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/g-plus.png" alt="" /></a></div>
-                    <div><a href="/"><img src="/assets/images/linkedin.png" alt="" /></a></div>
-                  </div>
-                </div>
-
-                {/* Desktop Navbar */}
-                <div className="header_btm">
-                  <nav className="navbar navbar-expand-lg custom_nav-container pt-3">
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#navbarSupportedContent"
-                      aria-controls="navbarSupportedContent"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation"
-                    >
-                      <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
-                        <ul className="navbar-nav">
-                          <li className="nav-item active">
-                            <Link className="nav-link" to="/">UHome <span className="sr-only">(current)</span></Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Listofcategory">Listofcategory</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/addproduct">Addproduct</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/showproduct">view</Link>
-                          </li>
-                          
-
-                          <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style={{ 'color': 'black' }} >Settings</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                              <a class="dropdown-item"><Link to="/epadmin">Edit Profile</Link></a>
-                              <a class="dropdown-item"><Link to="/cpadmin">Change Password</Link></a>
+                </>);
+            }
+            else {
+                setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                    <div className="row gx-0">
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                            <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                                <h2 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h2>
+                            </Link>
+                        </div>
+                        <div className="col-lg-9">
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                                <div className="col-lg-7 px-5 text-start">
+                                    <div className="h-100 d-inline-flex align-items-center py-2 me-4">
+                                        <i className="fa fa-envelope me-2" style={{ color: 'white' }}></i>
+                                        <p className="mb-0">info@example.com</p>
+                                    </div>
+                                    <div className="h-100 d-inline-flex align-items-center py-2">
+                                        <i className="fa fa-phone-alt me-2" style={{ color: 'white' }}></i>
+                                        <p className="mb-0">XXX XXX XXXX</p>
+                                    </div>
+                                </div>
+                                <div className="col-lg-5 px-5 text-end">
+                                    <div className="d-inline-flex align-items-center py-2">
+                                        <a className="me-3" href="#"><i className="fab fa-facebook-f text-white"></i></a>
+                                        <a className="me-3" href="#"><i className="fab fa-twitter text-white"></i></a>
+                                        <a className="me-3" href="#"><i className="fab fa-linkedin-in text-white"></i></a>
+                                        <a className="me-3" href="#"><i className="fab fa-instagram text-white"></i></a>
+                                        <a href="#"><i className="fab fa-youtube text-white"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Logout">Logout</Link>
-                          </li>
 
-                        </ul>
-                      </div>
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                                <Link to="/" className="navbar-brand d-block d-lg-none">
+                                    <h1 className="m-0 text-uppercase" style={{ color: 'white' }}>Shipping War</h1>
+                                </Link>
+                                <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                    <div className="navbar-nav mr-auto py-0">
+                                        <Link to="/" className="nav-item nav-link text-white">Home</Link>
+                                        <Link to="/about" className="nav-item nav-link text-white">About</Link>
+                                        <Link to="/service" className="nav-item nav-link text-white">Services</Link>
+                                        <Link to="/contact" className="nav-item nav-link text-white">Contact</Link>
+
+                                        
+                                        <Link to="/register" className="nav-item nav-link text-white">Register</Link>
+                                    </div>
+
+                                    <Link to="/login" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white " style={{backgroundColor:"#34699A",marginRight:"10px"}}>
+                                        Login <i className="fa fa-arrow-right ms-3"></i>
+                                    </Link>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
-                  </nav>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>);
-      }
-      else {
-        setNavbarContent(
-        <section className="header_section ">
-          <div className="container ">
-            {/* Mobile Navbar */}
-            <nav className="navbar navbar-expand-lg custom_nav-container d-lg-none" >
-              <Link className="navbar-brand" to="/">
-                <div className="logo-box">
-                  <img src="/assets/images/logo.png" alt="" />
-                  <span>Shipping War</span>
-                </div>
-              </Link>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
+                </>);
+            }
+        }, 1);
+    }, []);
 
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                  <li className="nav-item active">
-                    <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/About">About</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Service">Service</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Register">Register</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Login">Login</Link>
-                  </li>
-
-                </ul>
-              </div>
-            </nav>
-
-            {/* Desktop Header */}
-            <div className="header_container">
-              <div className="logo-box">
-                <img src="/assets/images/logo.png" alt="" />
-                <span>Shipping War</span>
-              </div>
-
-              <div>
-                <div className="header_top">
-                  <div className="header_top-contact">
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/phone.png" alt="" /></div>
-                      <span>+91258964785</span>
-                    </a>
-                    <a href="/" className="ml-4">
-                      <div><img src="/assets/images/mail.png" alt="" /></div>
-                      <span>Welcome{localStorage.getItem("email")} </span>
-                    </a>
-                  </div>
-
-                  <div className="header_top-social">
-                    <div><a href="https://www.facebook.com/"><img src="/assets/images/fb.png" alt="" /></a></div>
-                    <div><a href="https://www.facebook.com/TwitterInc/"><img src="/assets/images/twitter.png" alt="" /></a></div>
-                    <div><a href="https://www.google.co.in/"><img src="/assets/images/g-plus.png" alt="" /></a></div>
-                    <div><a href="
-                    "><img src="/assets/images/linkedin.png" alt="" /></a></div>
-                  </div>
-                </div>
-
-                {/* Desktop Navbar */}
-                <div className="header_btm">
-                  <nav className="navbar navbar-expand-lg custom_nav-container pt-3">
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#navbarSupportedContent"
-                      aria-controls="navbarSupportedContent"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation"
-                    >
-                      <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                      <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
-                        <ul className="navbar-nav">
-                          <li className="nav-item active">
-                            <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
-                          </li>
-
-
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/About">About</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Service">Service</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Register">Register</Link>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link" to="/Login">Login</Link>
-                          </li>
-
-
-                        </ul>
-                      </div>
-                    </div>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>);
-      }
-    }, 1000)
-  },[]);
-
-
-  return (
-    <>
-      {/* Header Start */}
-      {<Auth />}
-      {NavbarContent}
-      {/* Header End */}
-    </>
-  )
+    return (
+        <>
+            {/* Header Start */}
+            {<Auth />}
+            {NavbarContent>}
+            {/* Header End */}
+        </>
+    )
 }
 
-export default Navbar;
+export default Header;
