@@ -32,16 +32,9 @@ export const save =async(req,res)=>{
 };
 
 export const fetch=async(req,res)=>{
-   var condition_obj=url.parse(req.url,true).query.condition_obj;
-   if(condition_obj!=undefined)
-    condition_obj=JSON.parse(condition_obj); 
-   else
-    condition_obj={};  
-   var userList=await UserSchemaModel.find(condition_obj);
-   if(userList.length!=0)
-     res.status(200).json(userList);
-   else
-     res.status(404).json({"status":"Resource not found"}); 
+   var userList=await UserSchemaModel.find(req.query);
+   if(userList.length!=0) res.status(200).json(userList);
+   else res.status(404).json({"status":"Resource not found"}); 
   };
 
   export var deleteUser=async(req,res)=>{
