@@ -81,7 +81,7 @@ function ShowProducts() {
                         <tr >
                           <td>
                             <img
-                              src={`assets/uploads/shipmenticons/${row.piconnm}`}
+                              src={row.piconnm}
                               alt={row.title}
                               style={{
                                 maxWidth: "120px",

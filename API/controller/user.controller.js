@@ -1,5 +1,4 @@
 import "../models/connection.js";
-import url from 'url';
 import jwt from "jsonwebtoken";
 import rs from "randomstring";
 import sendMail from "./email.controller.js";

@@ -35,7 +35,7 @@ function Searchsc() {
  scList.map((row)=>(
     <div class="main_part" >
         <Link to='/showproduct' >
-        <img src={`../public/assets/uploads/subcategoryicons/${row.subcaticonnm}`} height={120} width={150}/>
+        <img src={row.subcaticonnm} height={120} width={150}/>
         <br/>
         <b>{row.subcatnm}</b>    
         </Link>

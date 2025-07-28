@@ -1,77 +1,124 @@
 import "../models/connection.js";
 import url from 'url';
 import path from 'path';
+import dotenv from 'dotenv';
+import { v2 as cloudinary } from 'cloudinary';
+import SubCategorySchemaModel from "../models/subcategory.model.js";
+
+// Load env
+dotenv.config();
+
+// Cloudinary config
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-import SubCategorySchemaModel from "../models/subcategory.model.js";
+// Save subcategory with Cloudinary image upload
+export const save = async (req, res) => {
+  try {
+    const subcategory = await SubCategorySchemaModel.find();
+    const l = subcategory.length;
+    const _id = l === 0 ? 1 : subcategory[l - 1]._id + 1;
 
-export const save=async(req,res)=>{
- const subcategory=await SubCategorySchemaModel.find();
- const l=subcategory.length;
- const _id=l==0?1:subcategory[l-1]._id+1;
+    const subcaticon = req.files.subcaticon;
 
- //to get file & to move in specific folder
- const subcaticon=req.files.subcaticon;
- const subcaticonnm=Date.now()+"-"+subcaticon.name;
- const uploadpath=path.join(__dirname,"../../UI/public/assets/uploads/subcategoryicons",subcaticonnm);
- subcaticon.mv(uploadpath);
+    const result = await cloudinary.uploader.upload(subcaticon.tempFilePath, {
+      folder: "subcategoryicons",
+      public_id: `${Date.now()}-${subcaticon.name.split('.')[0]}`,
+    });
 
+    const scDetails = {
+      ...req.body,
+      _id: _id,
+      subcaticonnm: result.secure_url,
+      cloudinary_id: result.public_id,
+    };
 
- const scDetails={...req.body,'_id':_id,"subcaticonnm":subcaticonnm};
- try{
     await SubCategorySchemaModel.create(scDetails);
-    res.status(201).json({"status":true});
- }
- catch(error){
-    res.status(500).json({"status":false});
- }
+    res.status(201).json({ status: true });
+  } catch (error) {
+    console.error("Save failed:", error);
+    res.status(500).json({ status: false, error: error.message });
+  }
 };
 
-
+// Fetch subcategories
 export const fetch = async (req, res) => {
-  var scList = await SubCategorySchemaModel.find(req.query);
-  if (scList.length != 0)
-    res.status(200).json(scList);
-  else
-    res.status(404).json({ "status": "Resource not found" });
+  try {
+    const scList = await SubCategorySchemaModel.find(req.query);
+    if (scList.length !== 0)
+      res.status(200).json(scList);
+    else
+      res.status(404).json({ status: "Resource not found" });
+  } catch (error) {
+    res.status(500).json({ status: false, error: error.message });
+  }
 };
 
-// export var deleteCategory = async (req, res) => {
-//   var obj = req.body;
-//   if (obj != undefined) {
-//     var condition_obj = JSON.parse(req.body.condition_obj);
-//     let cDetails = await CategorySchemaModel.findOne(condition_obj);
-//     if (cDetails) {
-//       let category = await CategorySchemaModel.deleteOne(condition_obj);
-//       if (category)
-//         res.status(200).json({ "status": "OK" });
-//       else
-//         res.status(500).json({ "status": "Server Error" });
-//     }
-//     else
-//       res.status(404).json({ "status": "Requested resource not available" });
-//   }
-//   else
-//     res.status(500).json({ "status": "Please enter valid condition" });
-// };
+// Delete subcategory and Cloudinary image
+export const deleteSubCategory = async (req, res) => {
+  try {
+    const { condition_obj } = req.body;
+    if (!condition_obj)
+      return res.status(400).json({ status: "Please enter valid condition" });
 
+    const parsedCondition = JSON.parse(condition_obj);
+    const scDetails = await SubCategorySchemaModel.findOne(parsedCondition);
 
-// export var update = async (req, res) => {
-//   var obj = req.body;
-//   if (obj != undefined) {
-//     let cDetails = await CategorySchemaModel.findOne(JSON.parse(req.body.condition_obj));
-//     if (cDetails) {
-//       let category = await CategorySchemaModel.updateOne(JSON.parse(req.body.condition_obj), { $set: JSON.parse(req.body.content_obj) });
-//       if (category)
-//         res.status(200).json({ "msg": "OK" });
-//       else
-//         res.status(500).json({ "status": "Server Error" });
-//     }
-//     else
-//       res.status(404).json({ "status": "Requested resource not available" });
-//   }
-//   else
-//     res.status(500).json({ "status": "Please enter valid condition" });
-// };
+    if (!scDetails)
+      return res.status(404).json({ status: "Requested resource not available" });
 
+    // Delete Cloudinary image
+    if (scDetails.cloudinary_id) {
+      await cloudinary.uploader.destroy(scDetails.cloudinary_id);
+    }
+
+    await SubCategorySchemaModel.deleteOne(parsedCondition);
+    res.status(200).json({ status: "OK" });
+  } catch (error) {
+    console.error("Delete failed:", error);
+    res.status(500).json({ status: false, error: error.message });
+  }
+};
+
+// Update subcategory with optional image replacement
+export const update = async (req, res) => {
+  try {
+    const { condition_obj, content_obj } = req.body;
+    if (!condition_obj || !content_obj)
+      return res.status(400).json({ status: "Please enter valid condition" });
+
+    const parsedCondition = JSON.parse(condition_obj);
+    const parsedContent = JSON.parse(content_obj);
+
+    const scDetails = await SubCategorySchemaModel.findOne(parsedCondition);
+    if (!scDetails)
+      return res.status(404).json({ status: "Requested resource not available" });
+
+    // If new file is uploaded, replace image in Cloudinary
+    if (req.files?.subcaticon) {
+      // Delete old image
+      if (scDetails.cloudinary_id)
+        await cloudinary.uploader.destroy(scDetails.cloudinary_id);
+
+      const subcaticon = req.files.subcaticon;
+      const result = await cloudinary.uploader.upload(subcaticon.tempFilePath, {
+        folder: "subcategoryicons",
+        public_id: `${Date.now()}-${subcaticon.name.split('.')[0]}`,
+      });
+
+      parsedContent.subcaticonnm = result.secure_url;
+      parsedContent.cloudinary_id = result.public_id;
+    }
+
+    await SubCategorySchemaModel.updateOne(parsedCondition, { $set: parsedContent });
+    res.status(200).json({ msg: "OK" });
+  } catch (error) {
+    console.error("Update failed:", error);
+    res.status(500).json({ status: false, error: error.message });
+  }
+};
