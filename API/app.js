@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import fileUpload from 'express-fileupload';
@@ -26,7 +25,7 @@ app.use(fileUpload());
 app.use(
   cors({
     origin: "https://the-shipping-war-oiw4.vercel.app",
-    Credential: true,
+    credential: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["content-type", "Authorization"],
   })

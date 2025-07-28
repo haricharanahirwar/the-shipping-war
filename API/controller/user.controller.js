@@ -18,7 +18,7 @@ export const save =async(req,res)=>{
   strict:true,
   lowercase:true
  });
- const userDetails={...req.body,'_id':_id,password:password,'status':0,role:'user',info:Date()};
+ const userDetails={...req.body,'_id':_id,password:password,'status':1,role:'user',info:Date()};
  console.log(userDetails);
  try{
     await UserSchemaModel.create(userDetails);
