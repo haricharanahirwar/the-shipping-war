@@ -8,7 +8,7 @@ import passwordGenerate from 'generate-password';
 import UserSchemaModel from "../models/user.model.js";
 
 export const save =async(req,res)=>{
- const users = await UserSchemaModel.find({"role": "user"});
+ const users = await UserSchemaModel.find();
  const l=users.length;
  const _id=l==0?1:users[l-1]._id+1;
  const password=passwordGenerate.generate({
@@ -27,7 +27,7 @@ export const save =async(req,res)=>{
  }
  catch{
     res.status(500).json({"status":false});
-   // console.log(error)
+    console.log(error)
  }
 };
 
