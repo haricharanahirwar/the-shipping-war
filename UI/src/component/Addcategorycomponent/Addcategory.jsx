@@ -23,6 +23,7 @@ function AddCategory() {
         setCatName("");
         setOutput("Category Added Successfully....");
       });
+      
     };
 
   return (

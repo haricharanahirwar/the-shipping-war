@@ -18,7 +18,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //configuration to fetch file from req
-app.use(fileUpload()); 
+app.use(fileUpload({
+  useTempFiles:true,
+  tempFileDir:'/tmp/'
+})); 
 
 //configuration to resolve cross origin problem
 //configuration to resolve cross origin problem
