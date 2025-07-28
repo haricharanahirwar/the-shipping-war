@@ -30,7 +30,7 @@ function Search() {
                                     {
                                         cList.map((row) => (
                                             <div class="main_part" >
-                                              <Link to={`/searchsc/${row.catnm}`}>  <img src={`public/assets/uploads/categoryicons/${row.caticonnm}`} height={120} width={150} /></Link>
+                                              <Link to={`/searchsc/${row.catnm}`}>  <img src={row.caticonnm}height={120} width={150} /></Link>
                                                 <br />
                                                 <b>{row.catnm}</b>
                                             </div>
