@@ -5,19 +5,21 @@ import { __userapiurl } from '../../../API_URL';
 
 function Register() {
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [mobile, setMobile] = useState();
-  const [address, setAddress] = useState();
-  const [city, setCity] = useState();
-  const [gender, setGender] = useState();
-  const [output, setOutput] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [gender, setGender] = useState("");
+  const [output, setOutput] = useState("");
 
   const handleSubmit = () => {
     const userDetails = { "name": name, "email": email, "mobile": mobile, "address": address, "city": city, "gender": gender };
     
     axios.post(__userapiurl + "save", userDetails)
     .then(() => {
+      console.log("Data Saved");
+      
         setName("");
         setEmail("");
         setMobile("");
@@ -26,7 +28,9 @@ function Register() {
         setGender("")
         setOutput("user Register succesfuly");
     })
-     .catch(() => {
+     .catch((error) => {
+      console.log("Got error"+error);
+      
         setOutput("user Register failed");
       })
 
