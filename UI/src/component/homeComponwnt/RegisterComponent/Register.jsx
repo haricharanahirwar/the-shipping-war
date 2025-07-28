@@ -19,7 +19,6 @@ function Register() {
     axios.post(__userapiurl + "save", userDetails)
     .then(() => {
       console.log("Data Saved");
-      
         setName("");
         setEmail("");
         setMobile("");
