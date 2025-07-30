@@ -9,7 +9,7 @@ function Addproduct() {
   const [categorynm, setCategorynm] = useState('');
   const [subcategorynm, setSubCategorynm] = useState('');
   const [baseamount, setBaseAmount] = useState('');
-  const [description, setDescription] = useState(null);
+  // const [description, setDescription] = useState(null);
   const [title, setTitle] = useState('');
   const [file, setFile] = useState(null);
   const [output, setOutput] = useState('');
@@ -53,7 +53,7 @@ function Addproduct() {
     formData.append('baseprice', baseamount);
     formData.append('title', title);
     formData.append('useremail', localStorage.getItem('email'));
-    formData.append('description', description);
+    // formData.append('description', description);
     formData.append('picon', file);
 
     const config = {
@@ -134,7 +134,7 @@ function Addproduct() {
                 </div>
                 <br />
 
-                <div className="form-group">
+                {/* <div className="form-group">
                   <label htmlFor="description">Shipment Description (PDF/DOC):</label><br />
                   <input
                     type="file"
@@ -142,7 +142,7 @@ function Addproduct() {
                     accept=".pdf,.doc,.docx"
                     onChange={handledescription}
                   />
-                </div>
+                </div> */}
                 <br />
 
                 <div className="form-group">

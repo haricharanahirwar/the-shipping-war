@@ -17,11 +17,11 @@ const ShipmentSchema = mongoose.Schema({
     // required: [true, "Sub Category name is required"],
     trim: true,
   },
-  descriptionnm: {
-    type: String,
-    // required: [true, "Description is required"],
-    trim: true,
-  },
+  // descriptionnm: {
+  //   type: String,
+  //   required: [true, "Description is required"],
+  //   trim: true,
+  // },
   baseprice: {
     type: Number,
     // required: [true, "Baseprice is required"],

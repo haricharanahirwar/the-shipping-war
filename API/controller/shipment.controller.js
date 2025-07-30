@@ -28,20 +28,20 @@ export const save = async (req, res) => {
       public_id: `${Date.now()}-${picon.name.split('.')[0]}`,
     });
 
-    const description = req.files.description;
-    const descResult = await cloudinary.uploader.upload(description.tempFilePath, {
-      folder: "shipmentdescriptions",
-      resource_type: "raw", // for non-images like PDFs
-      public_id: `${Date.now()}-${description.name.split('.')[0]}`,
-    });
+    // const description = req.files.description;
+    // const descResult = await cloudinary.uploader.upload(description.tempFilePath, {
+    //   folder: "shipmentdescriptions",
+    //   resource_type: "raw", // for non-images like PDFs
+    //   public_id: `${Date.now()}-${description.name.split('.')[0]}`,
+    // });
 
     const sDetails = {
       ...req.body,
       _id,
       piconnm: piconResult.secure_url,
       picon_cloudinary_id: piconResult.public_id,
-      descriptionnm: descResult.secure_url,
-      description_cloudinary_id: descResult.public_id,
+      // descriptionnm: descResult.secure_url,
+      // description_cloudinary_id: descResult.public_id,
       auctionprice: req.body.baseprice,
       info: new Date()
     };
