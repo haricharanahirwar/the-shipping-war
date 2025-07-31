@@ -45,7 +45,7 @@ export const save = async (req, res) => {
       auctionprice: req.body.baseprice,
       info: new Date()
     };
-
+    console.log(sDetails)
     await ShipmentSchemaModel.create(sDetails);
     res.status(201).json({ status: true });
   } catch (error) {

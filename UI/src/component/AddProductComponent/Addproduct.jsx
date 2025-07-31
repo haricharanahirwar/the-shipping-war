@@ -40,9 +40,9 @@ function Addproduct() {
     setFile(event.target.files[0]);
   };
 
-  const handledescription = (event) => {
-    setDescription(event.target.files[0]);
-  };
+  // const handledescription = (event) => {
+  //   setDescription(event.target.files[0]);
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,7 +67,7 @@ function Addproduct() {
         setBaseAmount('');
         setSubCatList([]);
         setTitle('');
-        setDescription(null);
+        // setDescription(null);
         setFile(null);
         setOutput("Product Added Successfully....");
       })
