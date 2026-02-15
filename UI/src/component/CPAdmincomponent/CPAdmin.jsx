@@ -1,79 +1,152 @@
 import './CPAdmin.css';
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import apiClient from '../../utils/apiClient';
 import { __userapiurl } from '../../API_URL';
 import { useNavigate } from 'react-router-dom';
 
 function CPAdmin() {
-
   const navigate = useNavigate();
-  const [ opassword , setOldPassword ] = useState();
-  const [ npassword , setNewPassword ] = useState();
-  const [ cnpassword , setConfirmNewPassword ] = useState();
-  const [ output , setOutput ] = useState();     
-  
-  const handleSubmit=()=>{
-    const email = localStorage.getItem("email");
-    axios.get(__userapiurl+"fetch",{
-        params :  {"email":email,"password":opassword} 
-    }).then((response)=>{
-        if(npassword==cnpassword)
-        {
-            var update_details={"condition_obj":{"email":email} ,"content_obj":{"password":cnpassword}};
-            axios.patch(__userapiurl+"update",update_details).then((response)=>{
-            alert("Password changed successfully....");
-            navigate("/logout");
-        });    
+  const [opassword, setOldPassword] = useState('');
+  const [npassword, setNewPassword] = useState('');
+  const [cnpassword, setConfirmNewPassword] = useState('');
+  const [output, setOutput] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Session check
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Please login first');
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  const handleSubmit = async () => {
+    if (!opassword || !npassword || !cnpassword) {
+      setOutput('All fields are required');
+      return;
+    }
+
+    if (npassword !== cnpassword) {
+      setOutput('New & Confirm New Password Mismatch....');
+      setNewPassword('');
+      setConfirmNewPassword('');
+      return;
+    }
+
+    setLoading(true);
+    setOutput('');
+
+    try {
+      // Use /user/change-password endpoint
+      await apiClient.patch('/user/change-password', {
+        oldPassword: opassword,
+        newPassword: cnpassword
+      });
+      
+      // Show success message
+      alert('Password changed successfully! Please login with your new password.');
+      
+      // Clear localStorage
+      localStorage.clear();
+      
+      // Dispatch auth state change event
+      window.dispatchEvent(new Event('authStateChanged'));
+      
+      // Redirect to login page directly
+      navigate('/login');
+    } catch (error) {
+      console.error('Password change error:', error);
+      if (error.response?.status === 401) {
+        if (error.response?.data?.message?.includes('old password')) {
+          setOutput('Invalid old password, please try again....');
+          setOldPassword('');
+        } else {
+          setOutput('Session expired. Please login again.');
+          setTimeout(() => navigate('/login'), 2000);
         }
-        else
-        {
-            setOutput("New & Confirm New Password Mismatch....");
-            setNewPassword("");
-            setConfirmNewPassword("");    
-        }
-    }).catch((error)=>{
-        setOutput("Invalid old password , plase try again....");
-        setOldPassword("");        
-    });
+      } else {
+        setOutput('Failed to change password. Please try again.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-    {/* About Start */}
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-<div class="col-lg-12">
-<h2 style={{'color':'orange'}} >{output}</h2>              
-<h1 class="mb-4">Change Password <span class="text-primary text-uppercase"> Here!!!</span></h1>
-<form>
-  <div class="form-group">
-    <label for="pwd">Old Password:</label>
-    <input type="password" class="form-control" value={opassword} onChange={(e)=>{ setOldPassword(e.target.value)}} />
-  </div>
-  <br/>
-  <div class="form-group">
-    <label for="pwd">New Password:</label>
-    <input type="password" class="form-control" value={npassword} onChange={(e)=>{ setNewPassword(e.target.value)}} />
-  </div>
-  <br/>
-  <div class="form-group">
-    <label for="pwd">Confirm New Password:</label>
-    <input type="password" class="form-control" value={cnpassword} onChange={(e)=>{ setConfirmNewPassword(e.target.value)}} />
-  </div>
-  <br/>
-  <button type="button" class="btn btn-warning" onClick={handleSubmit} style={{ backgroundColor: '#34699A', color: 'white' }}>Submit</button>
-</form>
+      {/* Change Password Start */}
+      <div className="modern-container">
+        <div className="modern-card fade-in">
+          <h1 className="modern-heading">Change Password</h1>
+          
+          {output && (
+            <div className={`alert-modern ${output.includes('successfully') ? 'alert-success-modern' : 'alert-danger-modern'} mb-4`}>
+              {output}
+            </div>
+          )}
 
-</div>
+          <form>
+            <div className="mb-4">
+              <label htmlFor="oldPassword" className="form-label-modern">Old Password:</label>
+              <input
+                type="password"
+                id="oldPassword"
+                className="form-control form-control-modern"
+                value={opassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="newPassword" className="form-label-modern">New Password:</label>
+              <input
+                type="password"
+                id="newPassword"
+                className="form-control form-control-modern"
+                value={npassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="confirmPassword" className="form-label-modern">Confirm New Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                className="form-control form-control-modern"
+                value={cnpassword}
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
+                disabled={loading}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="btn btn-primary-modern"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2"></span>
+                  Changing Password...
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-key me-2"></i>
+                  Change Password
+                </>
+              )}
+            </button>
+          </form>
         </div>
-    </div>
-</div>
-{/* About End */}
+      </div>
+      {/* Change Password End */}
     </>
-  )
+  );
 }
 
 export default CPAdmin;
-  
-

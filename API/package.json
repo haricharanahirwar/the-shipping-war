@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon --exec babel-node"
+    "dev": "nodemon --exec babel-node",
+    "create-accounts": "node scripts/createAdminAccounts.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,193 @@
+/* Modern SweetAlert2 Styles for Logout */
+
+/* Popup Container */
+.modern-swal-popup {
+  border-radius: 20px !important;
+  padding: 30px !important;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3) !important;
+  border: 2px solid rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Title */
+.modern-swal-title {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  margin-bottom: 15px !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* HTML Content */
+.modern-swal-html {
+  font-size: 16px !important;
+  color: #666 !important;
+  margin-bottom: 20px !important;
+}
+
+/* Actions Container */
+.modern-swal-actions {
+  gap: 15px !important;
+  margin-top: 25px !important;
+}
+
+/* Confirm Button */
+.modern-swal-confirm {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+.modern-swal-confirm:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6) !important;
+}
+
+.modern-swal-confirm:active {
+  transform: translateY(0) !important;
+}
+
+/* Cancel Button */
+.modern-swal-cancel {
+  background: #f5f5f5 !important;
+  color: #666 !important;
+  border: 2px solid #e0e0e0 !important;
+  padding: 12px 30px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.modern-swal-cancel:hover {
+  background: #e0e0e0 !important;
+  border-color: #ccc !important;
+  transform: translateY(-2px) !important;
+}
+
+.modern-swal-cancel:active {
+  transform: translateY(0) !important;
+}
+
+/* Icon Styling */
+.swal2-icon.swal2-question {
+  border-color: #667eea !important;
+  color: #667eea !important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: #667eea !important;
+}
+
+.swal2-icon.swal2-success [class^='swal2-success-line'] {
+  background-color: #667eea !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border-color: rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Backdrop */
+.swal2-container {
+  backdrop-filter: blur(5px);
+}
+
+/* Animation Classes (using animate.css) */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate__animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.animate__faster {
+  animation-duration: 0.3s;
+}
+
+.animate__fadeInDown {
+  animation-name: fadeInDown;
+}
+
+.animate__fadeOutUp {
+  animation-name: fadeOutUp;
+}
+
+.animate__zoomIn {
+  animation-name: zoomIn;
+}
+
+.animate__zoomOut {
+  animation-name: zoomOut;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-swal-popup {
+    padding: 20px !important;
+  }
+
+  .modern-swal-title {
+    font-size: 24px !important;
+  }
+
+  .modern-swal-html {
+    font-size: 14px !important;
+  }
+
+  .modern-swal-confirm,
+  .modern-swal-cancel {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+}

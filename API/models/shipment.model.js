@@ -4,27 +4,18 @@ const ShipmentSchema = mongoose.Schema({
   _id: Number,
   title: {
     type: String,
-    // required: [true, "Title is required"],
     trim: true,
   },
   catnm: {
     type: String,
-    // required: [true, "Category name is required"],
     trim: true,
   },
   subcatnm: {
     type: String,
-    // required: [true, "Sub Category name is required"],
     trim: true,
   },
-  // descriptionnm: {
-  //   type: String,
-  //   required: [true, "Description is required"],
-  //   trim: true,
-  // },
   baseprice: {
     type: Number,
-    // required: [true, "Baseprice is required"],
     trim: true,
   },
   auctionprice: {
@@ -33,15 +24,30 @@ const ShipmentSchema = mongoose.Schema({
   },
   piconnm: {
     type: String,
-    // required: [true, "Product icon name is required"],
     trim: true,
   },
   useremail: {
     type: String,
-    // required: [true, "User Email is required"],
     trim: true,
   },
   info: String,
+  status: {
+    type: String,
+    enum: ['active', 'expired', 'confirmed', 'completed'],
+    default: 'active'
+  },
+  winner_email: {
+    type: String,
+    default: null
+  },
+  winning_bid: {
+    type: Number,
+    default: null
+  },
+  confirmed_at: {
+    type: Date,
+    default: null
+  }
 });
 
 const ShipmentSchemaModel = mongoose.model("shipment_collection", ShipmentSchema);

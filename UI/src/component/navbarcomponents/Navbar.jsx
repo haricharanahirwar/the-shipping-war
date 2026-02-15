@@ -1,16 +1,50 @@
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Auth from '../authcomponent/Auth';
 
 function Navbar() {
-
+    const location = useLocation();
     const [NavbarContent, setNavbarContent] = useState();
+    const [role, setRole] = useState(localStorage.getItem("role"));
+    const [token, setToken] = useState(localStorage.getItem("token"));
+
+    // Update state when route changes or localStorage changes
+    useEffect(() => {
+        const updateAuthState = () => {
+            const currentRole = localStorage.getItem("role");
+            const currentToken = localStorage.getItem("token");
+            
+            if (currentRole !== role) {
+                setRole(currentRole);
+            }
+            if (currentToken !== token) {
+                setToken(currentToken);
+            }
+        };
+
+        // Check on mount and route change
+        updateAuthState();
+
+        // Listen for storage changes (updates from other tabs)
+        window.addEventListener('storage', updateAuthState);
+        
+        // Custom event for same-tab localStorage updates
+        window.addEventListener('authStateChanged', updateAuthState);
+
+        return () => {
+            window.removeEventListener('storage', updateAuthState);
+            window.removeEventListener('authStateChanged', updateAuthState);
+        };
+    }, [location.pathname, role, token]);
 
     useEffect(() => {
-        setInterval(() => {
+        const updateNavbar = () => {
+            const currentToken = localStorage.getItem("token");
+            const currentRole = localStorage.getItem("role");
+            const email = localStorage.getItem("email");
+            const name = localStorage.getItem("name");
 
-            if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "admin") {
+            if (currentToken && currentRole === "admin") {
                 setNavbarContent(<>    <div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
                     <div className="row gx-0">
                         <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
@@ -69,7 +103,61 @@ function Navbar() {
                 </div>
                 </>);
             }
-            else if (localStorage.getItem("token") != undefined && localStorage.getItem("role") == "user") {
+            else if (currentToken && currentRole === "manager") {
+                setNavbarContent(<>    <div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
+                    <div className="row gx-0">
+                        <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
+                            <Link to="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+
+                                <h2 className="m-0 text-white text-uppercase" style={{ 'color': "white" }}>Shipping War</h2>
+                            </Link>
+                        </div>
+                        <div className="col-lg-9">
+                            <div className="row gx-0 d-none d-lg-flex" style={{ backgroundColor: '#34699A' }}>
+                                <div className="col-lg-7 px-5 text-start">
+                                    <div className="h-100 d-inline-flex align-items-center py-2 me-4">
+                                        <i className="fa fa-envelope me-2 text-white"></i>
+                                        <p className="mb-0 text-white">Welcome : {localStorage.getItem('name') || localStorage.getItem('email')}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <nav className="navbar navbar-expand-lg navbar-light p-3 p-lg-0" style={{ backgroundColor: '#34699A' }}>
+                                <Link to="/" className="navbar-brand d-block d-lg-none">
+                                    <h1 className="m-0 text-white text-uppercase">Shipping War</h1>
+                                </Link>
+                                <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                    <div className="navbar-nav mr-auto py-0">
+                                        <Link to="/manager" className="nav-item nav-link text-white">Manager Home</Link>
+                                        <Link to="/manageusers" className="nav-item nav-link text-white">Manage Users</Link>
+                                        <Link to="/manageadmin" className="nav-item nav-link text-white">Manage Admin</Link>
+                                        <Link to="/listofcategory" className="nav-item nav-link text-white">Categories</Link>
+                                        <Link to="/showproduct" className="nav-item nav-link text-white">View Products</Link>
+                                        
+                                        <div className="nav-item dropdown">
+                                            <span className="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Settings</span>
+                                            <div className="dropdown-menu rounded-0 m-0">
+                                                <Link to="/epadmin" className="dropdown-item text-black">Edit Profile</Link>
+                                                <Link to="/cpadmin" className="dropdown-item text-black">Change Password</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link to="/logout" className="btn btn-light rounded-0 py-4 px-md-5 d-none d-lg-block text-white"style={{backgroundColor:"#34699A",color:"white",marginRight:"10px"}}>
+                                        Logout <i className="fa fa-arrow-right ms-3"></i>
+                                    </Link>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                </>);
+            }
+            else if (currentToken && currentRole === "user") {
                 setNavbarContent(<><div className="container-fluid px-0" style={{ backgroundColor: '#34699A', color: 'white' }}>
                     <div className="row gx-0">
                         <div className="col-lg-3 d-none d-lg-block" style={{ backgroundColor: '#34699A' }}>
@@ -179,13 +267,17 @@ function Navbar() {
                 </div>
                 </>);
             }
-        }, 1);
-    }, []);
+        };
+
+        // initial set
+        updateNavbar();
+
+        // cleanup - no need for storage listener here as it's handled in first useEffect
+    }, [role, token]);
 
         return (
             <>
     {/* Header Start */}
-    <Auth />
     {NavbarContent}
     {/* Header End */}
 </>

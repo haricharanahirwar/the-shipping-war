@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import { v2 as cloudinary } from 'cloudinary';
 import SubCategorySchemaModel from "../models/subcategory.model.js";
 
-// Load env
 dotenv.config();
 
 // Cloudinary config
@@ -17,18 +16,24 @@ cloudinary.config({
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-// Save subcategory with Cloudinary image upload
+// Save subcategory with Cloudinary (Production ready)
 export const save = async (req, res) => {
   try {
-    const subcategory = await SubCategorySchemaModel.find();
-    const l = subcategory.length;
-    const _id = l === 0 ? 1 : subcategory[l - 1]._id + 1;
+    const subcategory = await SubCategorySchemaModel.find().select('_id').sort({ _id: -1 }).limit(1);
+    const _id = subcategory.length === 0 ? 1 : subcategory[0]._id + 1;
 
     const subcaticon = req.files.subcaticon;
 
     const result = await cloudinary.uploader.upload(subcaticon.tempFilePath, {
       folder: "subcategoryicons",
       public_id: `${Date.now()}-${subcaticon.name.split('.')[0]}`,
+      resource_type: "auto",
+      quality: "auto:low",
+      fetch_format: "auto",
+      transformation: [
+        { width: 500, height: 500, crop: "limit" },
+        { quality: "auto:low" }
+      ]
     });
 
     const scDetails = {
@@ -109,6 +114,10 @@ export const update = async (req, res) => {
       const result = await cloudinary.uploader.upload(subcaticon.tempFilePath, {
         folder: "subcategoryicons",
         public_id: `${Date.now()}-${subcaticon.name.split('.')[0]}`,
+        transformation: [
+          { width: 500, height: 500, crop: "limit" },
+          { quality: "auto:low" }
+        ]
       });
 
       parsedContent.subcaticonnm = result.secure_url;

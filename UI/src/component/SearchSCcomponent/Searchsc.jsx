@@ -1,58 +1,75 @@
 import './Searchsc.css';
-import axios from 'axios';
-import { useState , useEffect } from 'react';
-import { __categoryapiurl , __subcategoryapiurl } from '../../API_URL';
-import { Link , useParams } from 'react-router-dom';
-
+import apiClient from '../../utils/apiClient';
+import { useState, useEffect } from 'react';
+import { __subcategoryapiurl } from '../../API_URL';
+import { Link, useParams } from 'react-router-dom';
 
 function Searchsc() {
-
   const params = useParams();
-  const [ scList , setSubCatList ] = useState([]);    
+  const [scList, setSubCatList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  useEffect(()=>{
-    axios.get(__subcategoryapiurl+"fetch",{
-        params :  {"catnm":params.catnm} 
-    }).then((response)=>{
+  useEffect(() => {
+    const fetchSubCategories = async () => {
+      try {
+        const response = await apiClient.get(__subcategoryapiurl + 'fetch', {
+          params: { catnm: params.catnm }
+        });
         setSubCatList(response.data);
-        // console.log(scList);
-    }).catch((error)=>{
-        console.log(error);        
-    });  
-  },[]);
+      } catch (error) {
+        console.error('Error fetching subcategories:', error);
+        setError('Unable to load subcategories');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSubCategories();
+  }, [params.catnm]);
 
   return (
     <>
-    {/* About Start */}
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-12">
-<h1 class="mb-4">SubCategory List <span class="text-primary text-uppercase">&gt;&gt;</span> {params.catnm} </h1>
-<center>
-<div id="main" >
-{
- scList.map((row)=>(
-    <div class="main_part" >
-        <Link to='/showproduct' >
-        <img src={row.subcaticonnm} height={120} width={150}/>
-        <br/>
-        <b>{row.subcatnm}</b>    
-        </Link>
-    </div>
- ))       
-}
-</div>
-</center>
+      <div className="modern-container">
+        <div className="modern-card fade-in">
+          <h1 className="modern-heading">
+            SubCategory List <span className="text-primary">&gt;&gt;</span> {params.catnm}
+          </h1>
+          
+          {error && (
+            <div className="alert-modern alert-danger-modern mb-4">
+              {error}
             </div>
+          )}
+
+          {loading ? (
+            <div className="text-center py-5">
+              <div className="loading-spinner"></div>
+              <p className="mt-3">Loading subcategories...</p>
+            </div>
+          ) : (
+            <center>
+              <div id="main">
+                {scList.length > 0 ? (
+                  scList.map((row) => (
+                    <div className="main_part" key={row._id}>
+                      <Link to="/showproduct">
+                        <img src={row.subcaticonnm} height={120} width={150} alt={row.subcatnm} />
+                        <br />
+                        <b>{row.subcatnm}</b>
+                      </Link>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-muted">No subcategories available for {params.catnm}</p>
+                )}
+              </div>
+            </center>
+          )}
         </div>
-    </div>
-</div>
-{/* About End */}
+      </div>
     </>
-  )
+  );
 }
 
 export default Searchsc;
-  
-

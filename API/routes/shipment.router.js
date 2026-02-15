@@ -1,19 +1,49 @@
 import express from 'express';
-
-//to link controller
-//import * as CategoryController from '../controller/category.controller.js';
+import { authenticate } from '../Middleware/authenticate.middleware.js';
+import { authorize, checkPermission } from '../Middleware/authorize.middleware.js';
+import { USER_ROLES } from '../constants/roles.constants.js';
 import * as ShipmentController from '../controller/shipment.controller.js';
 
 const router = express.Router();
 
-router.post("/save",ShipmentController.save);
+// Public route - fetch shipments
+router.get("/fetch", ShipmentController.fetch);
 
-router.get("/fetch",ShipmentController.fetch);
+// Protected route - save shipment (requires authentication)
+router.post("/save", 
+  authenticate,
+  ShipmentController.save
+);
 
-/*router.delete("/delete",CategoryController.deleteCategory);
+// Protected route - delete shipment (admin only)
+router.delete("/delete", 
+  authenticate,
+  authorize([USER_ROLES.ADMIN]),
+  ShipmentController.deleteShipment
+);
 
-router.patch("/update",CategoryController.update);*/
+// Protected route - update shipment (user/admin)
+router.patch("/update", 
+  authenticate,
+  ShipmentController.updateShipment
+);
 
 export default router;
 
 
+
+// Order confirmation routes
+router.post("/confirm-order",
+  authenticate,
+  ShipmentController.confirmOrder
+);
+
+router.get("/get-winner",
+  authenticate,
+  ShipmentController.getWinner
+);
+
+router.post("/complete-order",
+  authenticate,
+  ShipmentController.completeOrder
+);

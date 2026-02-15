@@ -1,0 +1,91 @@
+/* Manage Users Styles */
+
+.user-filter-tabs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-tab {
+  background: rgba(102, 126, 234, 0.1);
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  color: #667eea;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-tab:hover {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.filter-tab.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.filter-tab i {
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .user-filter-tabs {
+    gap: 0.5rem;
+  }
+
+  .filter-tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    flex: 1 1 calc(50% - 0.5rem);
+    justify-content: center;
+  }
+
+  .filter-tab i {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .filter-tab {
+    flex: 1 1 100%;
+  }
+}
+
+/* Action Buttons */
+.btn-sm {
+  white-space: nowrap;
+}
+
+/* Table Responsive Enhancement */
+@media (max-width: 991px) {
+  .table-modern {
+    font-size: 0.85rem;
+  }
+
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .d-flex.gap-2 {
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+
+  .btn-sm {
+    width: 100%;
+  }
+}

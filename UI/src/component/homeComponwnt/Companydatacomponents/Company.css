@@ -1,0 +1,419 @@
+/* Modern Company Section Styles */
+
+.company_section {
+  padding: 4.5rem 0; /* 5rem - 10% */
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.company_section::before {
+  content: '';
+  position: absolute;
+  width: 450px; /* 500px - 10% */
+  height: 450px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 50%;
+  top: -225px;
+  left: -225px;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(5deg); /* -20px - 10% */
+  }
+}
+
+.company_section .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Company Content */
+.company-content {
+  animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-45px); /* -50px - 10% */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.54rem 1.35rem; /* 0.6rem 1.5rem - 10% */
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-radius: 45px; /* 50px - 10% */
+  font-size: 0.81rem; /* 0.9rem - 10% */
+  font-weight: 600;
+  margin-bottom: 1.35rem; /* 1.5rem - 10% */
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.company-content .modern-heading {
+  font-size: 2.25rem; /* 2.5rem - 10% */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.35rem; /* 1.5rem - 10% */
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.company-description {
+  font-size: 0.9rem; /* 1rem - 10% */
+  line-height: 1.62; /* 1.8 - 10% */
+  color: #666;
+  margin-bottom: 2.7rem; /* 3rem - 10% */
+}
+
+/* Company Features */
+.company-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem; /* 1.5rem - 10% */
+  margin-bottom: 2.7rem; /* 3rem - 10% */
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem; /* 1.5rem - 10% */
+  padding: 1.35rem; /* 1.5rem - 10% */
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 13.5px; /* 15px - 10% */
+  transition: all 0.3s ease;
+  border-left: 3.6px solid transparent; /* 4px - 10% */
+}
+
+.feature-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-left-color: #667eea;
+  transform: translateX(4.5px); /* 5px - 10% */
+}
+
+.feature-icon {
+  width: 45px; /* 50px - 10% */
+  height: 45px;
+  min-width: 45px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 9px; /* 10px - 10% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.35rem; /* 1.5rem - 10% */
+  box-shadow: 0 4.5px 18px rgba(102, 126, 234, 0.3); /* Reduced */
+}
+
+.feature-text h5 {
+  font-size: 0.99rem; /* 1.1rem - 10% */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.27rem; /* 0.3rem - 10% */
+}
+
+.feature-text p {
+  font-size: 0.81rem; /* 0.9rem - 10% */
+  color: #666;
+  margin: 0;
+}
+
+/* Company Stats */
+.company-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.35rem; /* 1.5rem - 10% */
+}
+
+.stat-box {
+  text-align: center;
+  padding: 1.35rem; /* 1.5rem - 10% */
+  background: white;
+  border-radius: 13.5px; /* 15px - 10% */
+  box-shadow: 0 4.5px 18px rgba(0, 0, 0, 0.08); /* Reduced */
+  transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-4.5px); /* -5px - 10% */
+  box-shadow: 0 9px 27px rgba(102, 126, 234, 0.15); /* Enhanced */
+}
+
+.stat-box h3 {
+  font-size: 2.25rem; /* 2.5rem - 10% */
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.45rem; /* 0.5rem - 10% */
+}
+
+.stat-box p {
+  font-size: 0.81rem; /* 0.9rem - 10% */
+  color: #777;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Company Images */
+.company-images {
+  position: relative;
+  animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(45px); /* 50px - 10% */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.main-image {
+  position: relative;
+  border-radius: 18px; /* 20px - 10% */
+  overflow: hidden;
+  box-shadow: 0 9px 36px rgba(0, 0, 0, 0.15); /* Reduced */
+  animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.main-image:hover img {
+  transform: scale(1.05);
+}
+
+.image-badge {
+  position: absolute;
+  top: 18px; /* 20px - 10% */
+  right: 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.9rem 1.35rem; /* 1rem 1.5rem - 10% */
+  border-radius: 45px; /* 50px - 10% */
+  display: flex;
+  align-items: center;
+  gap: 0.45rem; /* 0.5rem - 10% */
+  font-weight: 600;
+  font-size: 0.81rem; /* 0.9rem - 10% */
+  box-shadow: 0 4.5px 18px rgba(0, 0, 0, 0.2); /* Reduced */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.secondary-image {
+  position: absolute;
+  bottom: -27px; /* -30px - 10% */
+  left: -27px;
+  width: 45%; /* 50% - 10% */
+  border-radius: 13.5px; /* 15px - 10% */
+  overflow: hidden;
+  box-shadow: 0 9px 36px rgba(0, 0, 0, 0.2); /* Reduced */
+  border: 4.5px solid white; /* 5px - 10% */
+  animation: slideInUp 1.2s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(27px); /* 30px - 10% */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.secondary-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.secondary-image:hover img {
+  transform: scale(1.1);
+}
+
+/* Floating Card */
+.floating-card {
+  position: absolute;
+  top: 50%;
+  right: -18px; /* -20px - 10% */
+  transform: translateY(-50%);
+  background: white;
+  padding: 1.35rem; /* 1.5rem - 10% */
+  border-radius: 13.5px; /* 15px - 10% */
+  box-shadow: 0 9px 36px rgba(0, 0, 0, 0.15); /* Reduced */
+  display: flex;
+  align-items: center;
+  gap: 0.9rem; /* 1rem - 10% */
+  max-width: 180px; /* 200px - 10% */
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(calc(-50% - 9px)); /* -10px - 10% */
+  }
+}
+
+.card-icon {
+  width: 45px; /* 50px - 10% */
+  height: 45px;
+  min-width: 45px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 9px; /* 10px - 10% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.35rem; /* 1.5rem - 10% */
+}
+
+.card-content h4 {
+  font-size: 0.9rem; /* 1rem - 10% */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.27rem; /* 0.3rem - 10% */
+}
+
+.card-content p {
+  font-size: 0.72rem; /* 0.8rem - 10% */
+  color: #666;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .company-images {
+    margin-top: 2.7rem; /* 3rem - 10% */
+  }
+
+  .floating-card {
+    right: 9px; /* 10px - 10% */
+  }
+}
+
+@media (max-width: 768px) {
+  .company_section {
+    padding: 3.6rem 0; /* 4rem - 10% */
+  }
+
+  .company-content .modern-heading {
+    font-size: 1.8rem; /* 2rem - 10% */
+  }
+
+  .company-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem; /* 1rem - 10% */
+  }
+
+  .stat-box {
+    padding: 0.9rem; /* 1rem - 10% */
+  }
+
+  .stat-box h3 {
+    font-size: 1.8rem; /* 2rem - 10% */
+  }
+
+  .secondary-image {
+    width: 40%;
+    bottom: -18px; /* -20px - 10% */
+    left: -18px;
+  }
+
+  .floating-card {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .company_section {
+    padding: 2.7rem 0; /* 3rem - 10% */
+  }
+
+  .company-content .modern-heading {
+    font-size: 1.53rem; /* 1.7rem - 10% */
+  }
+
+  .company-features {
+    gap: 0.9rem; /* 1rem - 10% */
+  }
+
+  .feature-item {
+    padding: 0.9rem; /* 1rem - 10% */
+  }
+
+  .company-stats {
+    grid-template-columns: 1fr;
+    gap: 0.9rem; /* 1rem - 10% */
+  }
+
+  .secondary-image {
+    position: static;
+    width: 100%;
+    margin-top: 1.35rem; /* 1.5rem - 10% */
+    border: 2.7px solid white; /* 3px - 10% */
+  }
+}

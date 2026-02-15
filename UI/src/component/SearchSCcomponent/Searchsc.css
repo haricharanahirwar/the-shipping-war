@@ -1,12 +1,142 @@
-#main
-{
- height:auto;
- width:600px;
+/* Subcategory Search Styles */
+
+#main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  width: 100%;
 }
 
-.main_part
-{
- height:150px;
- width:200px;
- float:left;  
+.main_part {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.main_part::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.main_part:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+}
+
+.main_part a {
+  text-decoration: none;
+  display: block;
+}
+
+.main_part img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.main_part:hover img {
+  transform: scale(1.05);
+}
+
+.main_part b {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  #main {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .main_part {
+    padding: 1.2rem;
+  }
+
+  .main_part img {
+    height: 130px;
+  }
+}
+
+@media (max-width: 767px) {
+  #main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .main_part {
+    padding: 1rem;
+  }
+
+  .main_part img {
+    height: 120px;
+  }
+
+  .main_part b {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 575px) {
+  #main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .main_part {
+    padding: 0.8rem;
+  }
+
+  .main_part img {
+    height: 100px;
+  }
+
+  .main_part b {
+    font-size: 0.85rem;
+  }
+}
+
+/* Loading State */
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(102, 126, 234, 0.2);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.text-muted {
+  color: #999;
+  font-size: 1.1rem;
+  padding: 3rem 0;
 }

@@ -32,10 +32,9 @@ export var fetch = async (req, res) => {
     const condition_obj = url.parse(req.url, true).query;
 
     const bidList = await BidSchemaModel.find(condition_obj);
-    if (bidList.length !== 0)
-      res.status(200).json(bidList);
-    else
-      res.status(404).json({ status: "Resource not found" });
+    
+    // Return empty array instead of 404 when no bids found
+    res.status(200).json(bidList);
   } catch (error) {
     console.error("Error in fetch:", error);
     res.status(500).json({ status: false, error: error.message });

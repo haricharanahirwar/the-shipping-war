@@ -7,7 +7,7 @@ import CategorySchemaModel from "../models/category.model.js";
 
 dotenv.config();
 
-// Setup Cloudinary from .env directly
+// Setup Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -16,18 +16,24 @@ cloudinary.config({
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-// SAVE CATEGORY
+// SAVE CATEGORY - Cloudinary (Production ready)
 export const save = async (req, res) => {
   try {
-    const category = await CategorySchemaModel.find();
-    const l = category.length;
-    const _id = l === 0 ? 1 : category[l - 1]._id + 1;
+    const category = await CategorySchemaModel.find().select('_id').sort({ _id: -1 }).limit(1);
+    const _id = category.length === 0 ? 1 : category[0]._id + 1;
 
-    // Cloudinary file upload
+    // Cloudinary upload
     const caticon = req.files.caticon;
     const uploadResult = await cloudinary.uploader.upload(caticon.tempFilePath, {
       folder: "categoryicons",
-      public_id: `${Date.now()}-${caticon.name.split('.')[0]}`
+      public_id: `${Date.now()}-${caticon.name.split('.')[0]}`,
+      resource_type: "auto",
+      quality: "auto:low",
+      fetch_format: "auto",
+      transformation: [
+        { width: 500, height: 500, crop: "limit" },
+        { quality: "auto:low" }
+      ]
     });
 
     const cDetails = {
@@ -40,7 +46,7 @@ export const save = async (req, res) => {
     await CategorySchemaModel.create(cDetails);
     res.status(201).json({ status: true });
   } catch (error) {
-    console.error("Cloudinary upload/save error:", error);
+    console.error("Save error:", error);
     res.status(500).json({ status: false, error: error.message });
   }
 };
@@ -69,6 +75,7 @@ export var deleteCategory = async (req, res) => {
       var condition_obj = JSON.parse(req.body.condition_obj);
       let cDetails = await CategorySchemaModel.findOne(condition_obj);
       if (cDetails) {
+        // Delete from Cloudinary
         if (cDetails.caticon_cloudinary_id) {
           await cloudinary.uploader.destroy(cDetails.caticon_cloudinary_id);
         }
@@ -99,15 +106,20 @@ export var update = async (req, res) => {
 
       let cDetails = await CategorySchemaModel.findOne(condition_obj);
       if (cDetails) {
-        // Optional: Replace image if new one uploaded
+        // Replace image if new one uploaded
         if (req.files?.caticon) {
+          // Delete old from Cloudinary
           if (cDetails.caticon_cloudinary_id)
             await cloudinary.uploader.destroy(cDetails.caticon_cloudinary_id);
 
           const newIcon = req.files.caticon;
           const uploadResult = await cloudinary.uploader.upload(newIcon.tempFilePath, {
             folder: "categoryicons",
-            public_id: `${Date.now()}-${newIcon.name.split('.')[0]}`
+            public_id: `${Date.now()}-${newIcon.name.split('.')[0]}`,
+            transformation: [
+              { width: 500, height: 500, crop: "limit" },
+              { quality: "auto:low" }
+            ]
           });
 
           content_obj.caticonnm = uploadResult.secure_url;

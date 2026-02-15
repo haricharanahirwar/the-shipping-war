@@ -1,0 +1,50 @@
+/* ManageAdmin Component Styles */
+
+.badge-admin {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.btn-secondary-modern {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.81rem 1.8rem; /* 0.9rem 2rem - 10% */
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border: none;
+  border-radius: 45px; /* 50px - 10% */
+  font-size: 0.9rem; /* 1rem - 10% */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-modern:hover {
+  transform: translateY(-2.7px); /* -3px - 10% */
+  box-shadow: 0 7.2px 27px rgba(79, 172, 254, 0.3); /* Enhanced */
+}
+
+.btn-secondary-modern:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.alert {
+  padding: 1.35rem; /* 1.5rem - 10% */
+  border-radius: 9px; /* 10px - 10% */
+  margin-bottom: 1.8rem; /* 2rem - 10% */
+}
+
+.alert-danger {
+  background: rgba(245, 87, 108, 0.1);
+  color: #f5576c;
+  border: 1.8px solid rgba(245, 87, 108, 0.2); /* 2px - 10% */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .btn-secondary-modern {
+    padding: 0.72rem 1.35rem; /* Reduced */
+    font-size: 0.81rem; /* 0.9rem - 10% */
+  }
+}

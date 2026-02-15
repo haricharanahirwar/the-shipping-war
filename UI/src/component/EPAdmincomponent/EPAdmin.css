@@ -1,0 +1,43 @@
+/* Edit Profile Modern Styles - 10% Size Reduction */
+
+/* Already using global modern styles from App.css */
+/* This file can be used for component-specific overrides if needed */
+
+.gender-options {
+  display: flex;
+  gap: 18px; /* 20px - 10% */
+  margin-top: 9px; /* 10px - 10% */
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 7.2px; /* 8px - 10% */
+  cursor: pointer;
+  padding: 9px 13.5px; /* 10px 15px - 10% */
+  border-radius: 7.2px; /* 8px - 10% */
+  transition: all 0.3s ease;
+}
+
+.radio-label:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+  width: 16.2px; /* 18px - 10% */
+  height: 16.2px;
+  accent-color: #667eea;
+}
+
+.radio-custom {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gender-options {
+    flex-direction: column;
+    gap: 9px; /* 10px - 10% */
+  }
+}
